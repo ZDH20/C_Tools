@@ -1,4 +1,4 @@
-#ifndef GRAPHS_H 
+#ifndef GRAPHS_H
 #define GRAPHS_H
 
 typedef struct Graph_t Graph;

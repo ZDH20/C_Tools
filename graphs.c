@@ -43,8 +43,8 @@ void graph_destroy(struct Graph_t *self) {
 
 int graph_add_edge(struct Graph_t *self, const char source, const char destination, int cost) {
     struct Vertex_t *vert_nav = self->head, *save = NULL;
-    int found_destination = 0;    
-    
+    int found_destination = 0;
+
     struct Edge_t *new_edge = edge_create(destination, cost);
 
     while(vert_nav) {
@@ -117,7 +117,7 @@ int graph_contains(struct Graph_t *self, const char data) {
 
 void graph_printf(struct Graph_t *self) {
     struct Vertex_t *vert_nav = self->head;
-    
+
     while(vert_nav) {
         printf("%c", vert_nav->data);
         struct Edge_t *e = vert_nav->edges;

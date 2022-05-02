@@ -1,26 +1,26 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "stacks.h"
+#include "queues.h"
 
 struct Node_t {
     void *data;
     struct Node_t *next;
 };
 
-struct Stack_t {
+struct Queue_t {
     struct Node_t *head, *tail;
     size_t sz;
 };
 
-void *stack_create(struct Stack_t **new_stack) {
-    *new_stack = (struct Stack_t*)malloc(sizeof(struct Stack_t));
-    (*new_stack)->head = NULL;
-    (*new_stack)->tail = NULL;
-    (*new_stack)->sz = 0;
+void *queue_create(struct Queue_t **new_queue) {
+    *new_queue = (struct Queue_t*)malloc(sizeof(struct Queue_t));
+    (*new_queue)->head = NULL;
+    (*new_queue)->tail = NULL;
+    (*new_queue)->sz = 0;
     return NULL;
 }
 
-void stack_destroy(struct Stack_t *self) {
+void queue_destroy(struct Queue_t *self) {
     struct Node_t *curr = self->head;
     while(curr != NULL) {
         struct Node_t *tmp = curr;
@@ -30,24 +30,22 @@ void stack_destroy(struct Stack_t *self) {
     free(self);
 }
 
-void stack_push(struct Stack_t *self, void *data) {
+void queue_push(struct Queue_t *self, void *data) {
     struct Node_t *new_node = (struct Node_t*)malloc(sizeof(struct Node_t));
     new_node->data = data;
     new_node->next = NULL;
     if(!self->head)
         self->head = self->tail = new_node;
     else {
-        struct Node_t *tmp = self->tail;
-        self->tail = new_node;
-        self->tail->next = tmp;
+        self->tail->next = new_node;
+        self->tail = self->tail->next;
     }
     self->sz++;
 }
 
-void *stack_pop(struct Stack_t *self) {
+void queue_pop(struct Queue_t *self) {
     if(!self->head)
-        return NULL;
-    void *rval = self->tail->data;
+        return;
     if(self->sz == 1) {
         free(self->head);
         self->head = self->tail = NULL;
@@ -58,17 +56,16 @@ void *stack_pop(struct Stack_t *self) {
         free(tmp);
     }
     self->sz--;
-    return rval;
 }
 
-void *stack_peek(struct Stack_t *self) {
+void *queue_peek(struct Queue_t *self) {
     return self->tail->data;
 }
 
-int stack_empty(struct Stack_t *self) {
+int queue_empty(struct Queue_t *self) {
     return !self->head;
 }
 
-size_t stack_size(struct Stack_t *self) {
+size_t queue_size(struct Queue_t *self) {
     return self->sz;
 }
