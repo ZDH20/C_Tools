@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "map.h"
+#include "maps.h"
 
 struct Bucket_t {
     char key;

@@ -1,5 +1,5 @@
-#ifndef MAP_H
-#define MAP_H
+#ifndef MAPS_H
+#define MAPS_H
 #define MAP_CREATE_INIT 100
 
 typedef struct Map_t Map;
@@ -16,4 +16,3 @@ int map_has_key(Map*, const char);
 void map_free_mem(Map*);
 
 #endif
-
