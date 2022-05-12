@@ -1,25 +1,12 @@
-#include <stdlib.h>
 #include <stdio.h>
-
-#include "stacks.h"
-#include "types.h"
-#include "castings.h"
+#include <stdlib.h>
+#include "map.h"
 
 int main(void) {
+    
+    Map *m = map_create(100); 
 
-    Stack *s;
-    stack_create(&s);
-
-    stack_push(s, STOV("hello"));
-    stack_push(s, STOV(" "));
-    stack_push(s, STOV("world!"));
-
-
-    while(!stack_empty(s)) {
-        printf("%s\n", VTOS(stack_pop(s)));
-    }
-
-    stack_destroy(s);
+    
 
     return 0;
 }

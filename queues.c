@@ -43,9 +43,10 @@ void queue_push(struct Queue_t *self, void *data) {
     self->sz++;
 }
 
-void queue_pop(struct Queue_t *self) {
+void *queue_pop(struct Queue_t *self) {
     if(!self->head)
-        return;
+        return NULL;
+    void *rval = self->tail;
     if(self->sz == 1) {
         free(self->head);
         self->head = self->tail = NULL;
@@ -56,6 +57,7 @@ void queue_pop(struct Queue_t *self) {
         free(tmp);
     }
     self->sz--;
+    return rval;
 }
 
 void *queue_peek(struct Queue_t *self) {

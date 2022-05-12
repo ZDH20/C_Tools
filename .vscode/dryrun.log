@@ -1,0 +1,5 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/zdh/c/playground/C_Tools'
+gcc -o main -Wall -Wextra -g -O2 -std=c99 graphs.c strings.c stacks.c queues.c vectors.c map.c main.c
+make: Leaving directory '/home/zdh/c/playground/C_Tools'
+ 

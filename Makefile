@@ -4,6 +4,8 @@ OBJ = graphs.o 	\
 	  strings.o \
 	  stacks.o  \
 	  queues.o  \
+	  vectors.o \
+	  map.o 	\
 	  main.o
 
 SRCS = $(OBJ:%.o=%.c)
